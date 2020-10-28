@@ -1,0 +1,12 @@
+name: word_prediction
+title: word_prediction
+username:
+account: shouankshastri
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2907916
+bundleId: 3682133
+url: https://shouankshastri.shinyapps.io/word_prediction/
+when: 1601366130.46448
+asMultiple: FALSE
+asStatic: FALSE
