@@ -1,12 +1,3 @@
-# This is the actual source code for predicting words
-
-suppressPackageStartupMessages({
-    library(tidyverse)
-    library(stringr)
-})
-
-# setwd("C:\\Users\\Intel\\Documents\\Coursera DS Capstone Project")
-
 # Load training data
 
 bi_words <- readRDS("./biwords.rds")
@@ -21,7 +12,7 @@ bigram <- function(input_words){
         top_n(1, n) %>%
         filter(row_number() == 1L) %>%
         select(num_range("word", 2)) %>%
-        predicted_word <- as.character()
+        as.character() -> predicted_word
     ifelse(predicted_word =="character(0)", "...thinking...", return(predicted_word))
 }
 
@@ -33,7 +24,7 @@ trigram <- function(input_words){
         top_n(1, n) %>%
         filter(row_number() == 1L) %>%
         select(num_range("word", 3)) %>%
-        predicted_word <- as.character()
+        as.character() -> predicted_word
     ifelse(predicted_word=="character(0)", bigram(input_words), return(predicted_word))
 }
 
@@ -46,7 +37,7 @@ quadgram <- function(input_words){
         top_n(1, n) %>%
         filter(row_number() == 1L) %>%
         select(num_range("word", 4)) %>%
-        predicted_word <- as.character()
+        as.character() -> predicted_word
     ifelse(predicted_word=="character(0)", trigram(input_words), return(predicted_word))
 }
 
@@ -60,7 +51,7 @@ pentagram <- function(input_words){
         top_n(1, n) %>%
         filter(row_number() == 1L) %>%
         select(num_range("word", 5)) %>%
-        predicted_word <- as.character() 
+        as.character() -> predicted_word
     ifelse(predicted_word=="character(0)", quadgram(input_words), return(predicted_word))
 }
 
@@ -74,13 +65,9 @@ prediction <- function(input){
     input_words <- unlist(str_split(input, boundary("word")))
     input_words <- tolower(input_words)
     # Call the matching functions
-    predicted_word <- ifelse(input_count == 1, bigram(input_words), 
-                  ifelse (input_count == 2, trigram(input_words), quadgram(input_words)))
+    predicted_word <- ifelse(input_count == 1, bigram(input_words),
+                             ifelse (input_count == 2, trigram(input_words),
+                                     ifelse(input_count == 3, quadgram(input_words), pentagram(input_words))))
     # Output
     return(predicted_word)
 }
-
-
-input <- "Hello how are"
-
-prediction(input)

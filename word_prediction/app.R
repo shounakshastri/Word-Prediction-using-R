@@ -9,11 +9,10 @@
 
 library(shiny)
 suppressPackageStartupMessages({
-    #library(tidyverse)
-    #library(stringr)
+    library(tidyverse)
+    library(stringr)
 })
 
-#source("C:\\Users\\Intel\\Documents\\Coursera DS Capstone Project\\prediction_code.R")
 source("prediction_code.R")
 
 # Define UI for application that draws a histogram
