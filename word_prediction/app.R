@@ -20,11 +20,10 @@ ui <- fluidPage(
     sidebarLayout(
         sidebarPanel(
             h2("Word Prediction App"),
-            h5("1. Delete the original text in the text box and start writing in the text box. The predictions would appear below."),
+            h5("1. Select the original text in the text box and start typing. The predictions would appear below."),
             h5("2. The code displays \"...thinking...\" when it is trying to predict a word"),
             h5("3. You can try copying a longer sentence to see what is the prediction."),
-            h5("4. The app can process pentagrams i.e. it can predict the 5th word based on the previous 4."),
-            h5("5. But if the user writes directly in the text box, then it predicts only bigrams.")
+            h5("4. The app can process pentagrams i.e. it can predict the 5th word based on the previous 4.")
         ),
         # Show a plot of the generated distribution
         mainPanel(
